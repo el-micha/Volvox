@@ -33,7 +33,9 @@ public class Board extends JPanel implements Runnable, Constants
 	{
 		System.out.println("running now");
 		//initializeEntities();
-		//repaint();
+		
+		Entity aCell = new Entity();
+		
 		
 		long timeDiff, sleep, beforeTime = System.currentTimeMillis();
 		while (true)
@@ -42,8 +44,7 @@ public class Board extends JPanel implements Runnable, Constants
 			
 			
 			//tickEntities(tick);
-			//repaint();
-			
+			repaint();
 			
 			//pause on buttonclick
 			while (!running)
@@ -77,6 +78,7 @@ public class Board extends JPanel implements Runnable, Constants
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
+		Drawer.drawAll(g2d, this);
 		
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();

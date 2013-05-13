@@ -7,7 +7,8 @@ public class Entity
 	
 	public Entity()
 	{
-		
+		mPhysics = new Physics(50, 50, this);
+		mDrawer = new Drawer("testcell.png", this);
 	}
 	
 	

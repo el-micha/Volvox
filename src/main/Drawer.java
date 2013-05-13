@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class Drawer implements Constants
 {
-	private static ArrayList<Drawer> allDrawers;
+	private static ArrayList<Drawer> allDrawers = new ArrayList<Drawer>();
 	
 	public Entity mParent;
 	private Image image;
@@ -26,6 +26,7 @@ public class Drawer implements Constants
 	
 	public static void drawAll(Graphics2D context, JPanel panel)
 	{
+		System.out.println("Drawing all");
 		for (int i = 0; i < allDrawers.size(); i++)
 		{
 			allDrawers.get(i).draw(context, panel);
