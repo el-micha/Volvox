@@ -10,4 +10,6 @@ public interface Constants
 	public final int DELAY_MS = 30;
 	public final int DELAY_NS = 10;
 	
+	public final String IMG_PATH = "C:\\Dokumente und Einstellungen\\Michael\\Eigene Dateien\\GitHub\\Volvox\\src\\images\\";
+	
 }
