@@ -8,7 +8,8 @@ import javax.swing.JPanel;
 
 public class GridDrawer implements Constants
 {
-	static Image emptyCell = (new ImageIcon(IMG_PATH + "testcell3.png")).getImage();
+	static Image air = (new ImageIcon(IMG_PATH + "air.png")).getImage();
+	static Image soil = (new ImageIcon(IMG_PATH + "soil.png")).getImage();
 	static Image innerCell;
 	static Image borderCell;
 	static Grid theGrid;
@@ -29,7 +30,11 @@ public class GridDrawer implements Constants
 				
 				if (currentCellInt == 0)
 				{
-					context.drawImage(emptyCell, i * CELL_SIZE, j * CELL_SIZE, panel);
+					context.drawImage(air, i * CELL_SIZE, j * CELL_SIZE, panel);
+				}
+				else if (currentCellInt == 1)
+				{
+					context.drawImage(soil, i * CELL_SIZE, j * CELL_SIZE, panel);
 				}
 				else
 				{

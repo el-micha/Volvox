@@ -20,7 +20,12 @@ public class Grid
 		{
 			for (int j = 0; j < height; j++)
 			{
-				intGrid[i][j] = 0;
+				if (j < height/2)
+					intGrid[i][j] = 0;
+				else 
+				{
+					intGrid[i][j] = 1;
+				}
 			}
 		}
 		//intGrid[7][10] = 1;
@@ -36,5 +41,10 @@ public class Grid
 	public int [][] getGrid()
 	{
 		return intGrid;
+	}
+	
+	public void integrateCells()
+	{
+		
 	}
 }
