@@ -13,4 +13,6 @@ public interface Constants
 	//public final String IMG_PATH = "C:\\Dokumente und Einstellungen\\Michael\\Eigene Dateien\\GitHub\\Volvox\\src\\images\\";
 	public final String IMG_PATH = "D:\\GitHub\\Volvox\\src\\images\\";
 	
+	public final int MAX_CELL_NUMBER = 4096;
+	
 }

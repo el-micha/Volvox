@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-public class Grid 
+public class Grid implements Constants
 {
 	private int [] [] intGrid;
 	public int width;
@@ -43,8 +43,16 @@ public class Grid
 		return intGrid;
 	}
 	
-	public void integrateCells()
+	public void integrateCells(Volvox aVolvox)
 	{
-		
+		int[][] cells = aVolvox.getCells();
+		for (int i = 0; i < aVolvox.getCellCounter() && i < MAX_CELL_NUMBER; i++)
+		{
+			if (cells[i][0] == 0)
+				continue;
+			
+			intGrid[cells[i][0]][cells[i][1]] = cells[i][2];
+			
+		}
 	}
 }
