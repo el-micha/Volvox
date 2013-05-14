@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class Drawer implements Constants
+public class Old_Drawer implements Constants
 {
-	private static ArrayList<Drawer> allDrawers = new ArrayList<Drawer>();
+	private static ArrayList<Old_Drawer> allDrawers = new ArrayList<Old_Drawer>();
 	
 	public Entity mParent;
 	private Image image;
 	
-	public Drawer(String imageName, Entity parent) 
+	public Old_Drawer(String imageName, Entity parent) 
 	{
 		ImageIcon ii = new ImageIcon(IMG_PATH + imageName);
         image = ii.getImage();

@@ -13,12 +13,17 @@ public class Board extends JPanel implements Runnable, Constants
 	public boolean running = true;
 	private int tick = 0;
 	
+	private Grid theGrid;
+	
 	public Board()
 	{
 		setBackground(Color.DARK_GRAY);
 		setDoubleBuffered(true);
 		setSize(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
 		setLocation(100, 100);
+		
+		theGrid = new Grid(GAMEBOARD_WIDTH / CELL_SIZE, GAMEBOARD_HEIGHT / CELL_SIZE);
+		
 	}
 
 	public void addNotify()
@@ -33,9 +38,7 @@ public class Board extends JPanel implements Runnable, Constants
 	{
 		System.out.println("running now");
 		//initializeEntities();
-		
-		Entity aCell = new Entity();
-		
+		//better do that in constructor of Board
 		
 		long timeDiff, sleep, beforeTime = System.currentTimeMillis();
 		while (true)
@@ -78,7 +81,7 @@ public class Board extends JPanel implements Runnable, Constants
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
-		Drawer.drawAll(g2d, this);
+		theGrid.drawGrid(g2d, this);
 		
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
