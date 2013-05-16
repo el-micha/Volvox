@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel implements Runnable, Constants
 {
+	private VolvoxSim parent;
 	private Thread simulator;
 	public boolean running = true;
 	private int tick = 0;
@@ -25,6 +26,11 @@ public class Board extends JPanel implements Runnable, Constants
 		theGrid = new Grid(GAMEBOARD_WIDTH / CELL_SIZE, GAMEBOARD_HEIGHT / CELL_SIZE);
 		
 	}
+	
+	public void registerParent(VolvoxSim aParent)
+	{
+		parent = aParent;
+	}
 
 	public void addNotify()
 	{
@@ -36,7 +42,10 @@ public class Board extends JPanel implements Runnable, Constants
 	@Override
 	public void run()
 	{
+		parent.getInputListener().registerGrid(theGrid);
+		
 		System.out.println("running now");
+		
 		//initializeEntities();
 		//better do that in constructor of Board
 		

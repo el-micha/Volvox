@@ -1,15 +1,20 @@
 package main;
 
 import java.awt.Color;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
 public class VolvoxSim extends JFrame implements Constants
 {
+	Board board;
+	InputListener listener;
+	
 	public VolvoxSim()
 	{
-
-		Board board = new Board();
+		board = new Board();
+		board.registerParent(this);
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
@@ -20,7 +25,12 @@ public class VolvoxSim extends JFrame implements Constants
 		setVisible(true);
 		
 		
+		
+		listener = new InputListener();
+		
+		
 		add(board);
+		addMouseListener(listener);
 		
 		//InputListener inputListener = new InputListener(board, scrollFrame);
 		//addKeyListener(inputListener);
@@ -28,6 +38,15 @@ public class VolvoxSim extends JFrame implements Constants
 		
 		
 		
+	}
+	
+	public InputListener getInputListener()
+	{
+		return listener;
+	}
+	public Board getBoard()
+	{
+		return board;
 	}
 	
 	public static void main(String [] args)
