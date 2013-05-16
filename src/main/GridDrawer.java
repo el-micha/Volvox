@@ -10,6 +10,7 @@ public class GridDrawer implements Constants
 {
 	static Image air = (new ImageIcon(IMG_PATH + "air.png")).getImage();
 	static Image soil = (new ImageIcon(IMG_PATH + "soil.png")).getImage();
+	static Image water = (new ImageIcon(IMG_PATH + "water.png")).getImage();
 	static Image innerCell;
 	static Image borderCell;
 	static Grid theGrid;
@@ -34,7 +35,7 @@ public class GridDrawer implements Constants
 				}
 				else if (currentCellInt == 1)
 				{
-					context.drawImage(soil, i * CELL_SIZE, j * CELL_SIZE, panel);
+					context.drawImage(water, i * CELL_SIZE, j * CELL_SIZE, panel);
 				}
 				else
 				{
