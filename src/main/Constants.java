@@ -15,4 +15,6 @@ public interface Constants
 	
 	public final int MAX_CELL_NUMBER = 4096;
 	
+	public final boolean OUTPUT = true;
+	
 }

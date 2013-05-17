@@ -33,10 +33,12 @@ public class Grid implements Constants
 		myDrawer = new GridDrawer(this);
 	}
 	
-	public void setCell(int x, int y)
+	public void setCell(int x, int y, int cellType)
 	{
 		//TODO: mehr abfangen
-		intGrid[(int)Math.round(x/8)][(int)Math.round(y/8)] = 2;
+		if (x < 0 || x > GAMEBOARD_WIDTH || y < 0 || y > GAMEBOARD_HEIGHT)
+			return;
+		intGrid[(int)Math.round(x/8)][(int)Math.round(y/8)] = cellType;
 	}
 	
 	public void drawGrid(Graphics2D context, JPanel panel)

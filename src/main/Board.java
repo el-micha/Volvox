@@ -44,7 +44,7 @@ public class Board extends JPanel implements Runnable, Constants
 	{
 		parent.getInputListener().registerGrid(theGrid);
 		
-		System.out.println("running now");
+		Ulf.out("running now");
 		
 		//initializeEntities();
 		//better do that in constructor of Board

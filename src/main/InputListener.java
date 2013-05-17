@@ -26,13 +26,15 @@ public class InputListener implements MouseListener
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(MouseEvent e) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(MouseEvent e) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
@@ -45,15 +47,17 @@ public class InputListener implements MouseListener
 		
 		int x = e.getX() - 4;	//window offsets
 		int y = e.getY() - 30;
-		System.out.println("Click at " + x + "/" + y);
+		Ulf.out("Click at " + x + "/" + y);
 		
-		grid.setCell(x, y);
+		grid.setCell(x, y, 2);
 		
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(MouseEvent e) 
+	{
 		// TODO Auto-generated method stub
+		
 		
 	}
 	

@@ -51,8 +51,6 @@ public class VolvoxSim extends JFrame implements Constants
 	
 	public static void main(String [] args)
 	{
-		System.out.println("hello world");
 		new VolvoxSim();
-		System.out.println("bye world");
 	}
 }
