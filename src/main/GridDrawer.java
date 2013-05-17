@@ -37,6 +37,10 @@ public class GridDrawer implements Constants
 				{
 					context.drawImage(water, i * CELL_SIZE, j * CELL_SIZE, panel);
 				}
+				else if (currentCellInt == 2)
+				{
+					context.drawImage(soil, i * CELL_SIZE, j * CELL_SIZE, panel);
+				}
 				else
 				{
 					System.out.println("Unknown cell type: " + currentCellInt);

@@ -3,6 +3,8 @@ package main;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 public class InputListener implements MouseListener
 {
 	private Grid grid;
@@ -20,14 +22,6 @@ public class InputListener implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
-		if (grid == null)
-			return;
-		
-		int x = e.getX();
-		int y = e.getY();
-		System.out.println("Click at " + x + "/" + y);
-		
-		grid.setCell(x, y);
 		
 	}
 
@@ -44,8 +38,16 @@ public class InputListener implements MouseListener
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public void mousePressed(MouseEvent e) 
+	{
+		if (grid == null)
+			return;
+		
+		int x = e.getX() - 4;	//window offsets
+		int y = e.getY() - 30;
+		System.out.println("Click at " + x + "/" + y);
+		
+		grid.setCell(x, y);
 		
 	}
 
