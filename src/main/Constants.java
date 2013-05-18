@@ -8,7 +8,7 @@ public interface Constants
 	public final int CELL_SIZE = 8;
 	public final int MAX_CELL_NUMBER = 4096;
 	
-	public final int DELAY_MS = 30;
+	public final int DELAY_MS = 20;
 	public final int DELAY_NS = 0;
 	
 	public final boolean OUTPUT = true;
