@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
-public class InputListener implements MouseListener
+public class InputListener implements MouseListener, Constants
 {
 	private Grid grid;
 	
@@ -45,8 +45,8 @@ public class InputListener implements MouseListener
 		if (grid == null)
 			return;
 		
-		int x = e.getX() - 4;	//window offsets
-		int y = e.getY() - 30;
+		int x = e.getX() - WINDOW_FRAME_OFFSET_X;	//window offsets
+		int y = e.getY() - WINDOW_FRAME_OFFSET_Y;
 		Ulf.out("Click at " + x + "/" + y);
 		
 		grid.setCell(x, y, 2);
