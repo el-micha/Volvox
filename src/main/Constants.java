@@ -16,8 +16,8 @@ public interface Constants
 	/*	MACHINE DEPENDENT VARIABLES  */
 	
 	
-	public final String IMG_PATH = "C:\\Dokumente und Einstellungen\\Michael\\Eigene Dateien\\GitHub\\Volvox\\src\\images\\";
-	//public final String IMG_PATH = "D:\\GitHub\\Volvox\\src\\images\\";
+	//public final String IMG_PATH = "C:\\Dokumente und Einstellungen\\Michael\\Eigene Dateien\\GitHub\\Volvox\\src\\images\\";
+	public final String IMG_PATH = "D:\\GitHub\\Volvox\\src\\images\\";
 	public final int WINDOW_FRAME_OFFSET_X = 4;
 	public final int WINDOW_FRAME_OFFSET_Y = 30;
 	
