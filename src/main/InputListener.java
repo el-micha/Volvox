@@ -49,7 +49,7 @@ public class InputListener implements MouseListener, Constants
 		int y = e.getY() - WINDOW_FRAME_OFFSET_Y;
 		Ulf.out("Click at " + x + "/" + y);
 		
-		grid.setCell(x, y, 2);
+		grid.setCell(x, y, 1);
 		
 	}
 
