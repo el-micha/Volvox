@@ -46,6 +46,12 @@ public class Grid implements Constants
 		myDrawer.drawGrid(context, panel);
 	}
 	
+	public int getCellAt(int x, int y)
+	{
+		//TODO: abfangen!
+		return intGrid[x][y];
+	}
+	
 	public int [][] getGrid()
 	{
 		return intGrid;
