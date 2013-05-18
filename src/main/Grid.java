@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Graphics2D;
-import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -17,14 +16,11 @@ public class Grid implements Constants
 		width = mWidth;
 		height = mHeight;
 		intGrid = new int [width][height];
-		Random random = new Random();
 		for (int i = 0; i < width; i++)
 		{
 			for (int j = 0; j < height; j++)
 			{
-				int r = random.nextInt(100);
-				
-				if (r > 90)
+				if (j < height/2)
 					intGrid[i][j] = 0;
 				else 
 				{
@@ -36,37 +32,6 @@ public class Grid implements Constants
 		
 		myDrawer = new GridDrawer(this);
 	}
-	
-	public Grid(int mWidth, int mHeight, boolean filled)
-	{
-		width = mWidth;
-		height = mHeight;
-		intGrid = new int [width][height];
-		
-		myDrawer = new GridDrawer(this);
-	}
-	
-	public void tick(int gameTick)
-	{
-		Grid newGrid = new Grid(width, height, false);
-		for (int i = 0; i < width; i++)
-		{
-			for (int j = 0; j < height; j++)
-			{
-				int neighbours = 0;
-				
-				
-				if (neighbours > 90)
-					intGrid[i][j] = 0;
-				else 
-				{
-					intGrid[i][j] = 1;
-				}
-			}
-		}
-	}
-	
-	
 	
 	public void setCell(int x, int y, int cellType)
 	{
@@ -92,4 +57,16 @@ public class Grid implements Constants
 		return intGrid;
 	}
 	
+	public void integrateCells(Volvox aVolvox)
+	{
+		int[][] cells = aVolvox.getCells();
+		for (int i = 0; i < aVolvox.getCellCounter() && i < MAX_CELL_NUMBER; i++)
+		{
+			if (cells[i][0] == 0)
+				continue;
+			
+			intGrid[cells[i][0]][cells[i][1]] = cells[i][2];
+			
+		}
+	}
 }
