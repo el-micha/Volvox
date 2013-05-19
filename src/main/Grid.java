@@ -59,7 +59,7 @@ public class Grid implements Constants
 			for (int j = 0; j < height; j++)
 			{
 				
-				int neighbours = getSecondNeighbours(i, j);
+				int neighbours = getNeighbours(i, j);
 				
 				if (getCellAt(i, j).getType() == LIVING_CELL)
 					if ((neighbours >= RULE_SURVIVE_MIN) && (neighbours <= RULE_SURVIVE_MAX))
@@ -105,9 +105,44 @@ public class Grid implements Constants
 				if (getCellAt(x - 1, y - 1).getType() == LIVING_CELL)
 					neighbours++;
 			}
+			else 
+			{
+				if (getCellAt(x - 1, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
 			if (y < height - 1)
 			{
 				if (getCellAt(x - 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(x - 1, 0).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		else 
+		{
+			if (getCellAt(width - 1, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(width - 1, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(width - 1, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(width - 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else
+			{
+				if (getCellAt(width - 1, 0).getType() == LIVING_CELL)
 					neighbours++;
 			}
 		}
@@ -120,9 +155,44 @@ public class Grid implements Constants
 				if (getCellAt(x + 1, y - 1).getType() == LIVING_CELL)
 					neighbours++;
 			}
+			else 
+			{
+				if (getCellAt(x + 1, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
 			if (y < height - 1)
 			{
 				if (getCellAt(x + 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(x + 1, 0).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		else
+		{
+			if (getCellAt(0, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(0, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else
+			{
+				if (getCellAt(0, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(0, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(0, 0).getType() == LIVING_CELL)
 					neighbours++;
 			}
 		}
@@ -131,9 +201,19 @@ public class Grid implements Constants
 			if (getCellAt(x, y - 1).getType() == LIVING_CELL)
 				neighbours++;
 		}
+		else 
+		{
+			if (getCellAt(x, height - 1).getType() == LIVING_CELL)
+				neighbours++;
+		}
 		if (y < height - 1)
 		{
 			if (getCellAt(x, y + 1).getType() == LIVING_CELL)
+				neighbours++;
+		}
+		else
+		{
+			if (getCellAt(x, 0).getType() == LIVING_CELL)
 				neighbours++;
 		}
 		
@@ -152,9 +232,44 @@ public class Grid implements Constants
 				if (getCellAt(x - 1, y - 1).getType() == LIVING_CELL)
 					neighbours++;
 			}
+			else 
+			{
+				if (getCellAt(x - 1, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
 			if (y < height - 1)
 			{
 				if (getCellAt(x - 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(x - 1, 0).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		else 
+		{
+			if (getCellAt(width - 1, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(width - 1, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(width - 1, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(width - 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else
+			{
+				if (getCellAt(width - 1, 0).getType() == LIVING_CELL)
 					neighbours++;
 			}
 		}
@@ -167,9 +282,44 @@ public class Grid implements Constants
 				if (getCellAt(x + 1, y - 1).getType() == LIVING_CELL)
 					neighbours++;
 			}
+			else 
+			{
+				if (getCellAt(x + 1, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
 			if (y < height - 1)
 			{
 				if (getCellAt(x + 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(x + 1, 0).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		else
+		{
+			if (getCellAt(0, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(0, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else
+			{
+				if (getCellAt(0, height - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(0, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt(0, 0).getType() == LIVING_CELL)
 					neighbours++;
 			}
 		}
@@ -178,9 +328,19 @@ public class Grid implements Constants
 			if (getCellAt(x, y - 1).getType() == LIVING_CELL)
 				neighbours++;
 		}
+		else 
+		{
+			if (getCellAt(x, height - 1).getType() == LIVING_CELL)
+				neighbours++;
+		}
 		if (y < height - 1)
 		{
 			if (getCellAt(x, y + 1).getType() == LIVING_CELL)
+				neighbours++;
+		}
+		else
+		{
+			if (getCellAt(x, 0).getType() == LIVING_CELL)
 				neighbours++;
 		}
 		//##########################################################
@@ -209,6 +369,10 @@ public class Grid implements Constants
 					neighbours+=SECONDARY_WEIGHT;
 			}
 		}
+		else 
+		{
+
+		}
 		if (x < width - 2)
 		{
 			if (getCellAt(x + 2, y).getType() == LIVING_CELL)
@@ -234,6 +398,10 @@ public class Grid implements Constants
 					neighbours+=SECONDARY_WEIGHT;
 			}
 		}
+		else
+		{
+			
+		}
 		if (y > 1)
 		{
 			if (getCellAt(x, y - 2).getType() == LIVING_CELL)
@@ -249,6 +417,10 @@ public class Grid implements Constants
 					neighbours+=SECONDARY_WEIGHT;
 			}
 		}
+		else 
+		{
+			
+		}
 		if (y < height - 2)
 		{
 			if (getCellAt(x, y + 2).getType() == LIVING_CELL)
@@ -263,6 +435,10 @@ public class Grid implements Constants
 				if (getCellAt(x + 1, y + 2).getType() == LIVING_CELL)
 					neighbours+=SECONDARY_WEIGHT;
 			}
+		}
+		else 
+		{
+			
 		}
 		
 		return (int)Math.round(neighbours);
