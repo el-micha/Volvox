@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class Grid implements Constants
 {
-	private int [] [] intGrid;
+	private Cell [] [] cellGrid;
 	public int width;
 	public int height;
 	private GridDrawer myDrawer;
@@ -19,7 +19,7 @@ public class Grid implements Constants
 	{
 		width = mWidth;
 		height = mHeight;
-		intGrid = new int [width][height];
+		cellGrid = new Cell [width][height];
 		Random random = new Random();
 		for (int i = 0; i < width; i++)
 		{
@@ -28,10 +28,10 @@ public class Grid implements Constants
 				int r = random.nextInt(100);
 				
 				if (r > 90)
-					intGrid[i][j] = 0;
+					getCellAt(i, j).setType(0);
 				else 
 				{
-					intGrid[i][j] = 1;
+					getCellAt(i, j).setType(1);
 				}
 			}
 		}
@@ -44,7 +44,7 @@ public class Grid implements Constants
 	{
 		width = mWidth;
 		height = mHeight;
-		intGrid = new int [width][height];
+		cellGrid = new Cell [width][height];
 		
 		myDrawer = new GridDrawer(this);
 	}
@@ -58,7 +58,7 @@ public class Grid implements Constants
 			{
 				int neighbours = getNeigbours(i, j);
 				
-				if (intGrid[i][j] == LIVING_CELL)
+				if (getCellAt(i, j).getType() == LIVING_CELL)
 					if ((neighbours < 2) || (neighbours > 3))
 						newGrid.getGrid()[i][j] = DEAD_CELL;
 					else 
@@ -98,7 +98,7 @@ public class Grid implements Constants
 		//TODO: mehr abfangen
 		if (x < 0 || x > GAMEBOARD_WIDTH || y < 0 || y > GAMEBOARD_HEIGHT)
 			return;
-		intGrid[(int)Math.round(x/8)][(int)Math.round(y/8)] = cellType;
+		getCellAt((int)Math.round(x/8), (int)Math.round(y/8)).setType(cellType);
 	}
 	
 	public void drawGrid(Graphics2D context, JPanel panel)
@@ -106,15 +106,16 @@ public class Grid implements Constants
 		myDrawer.drawGrid(context, panel);
 	}
 	
-	public int getCellAt(int x, int y)
+	public Cell getCellAt(int x, int y)
 	{
 		//TODO: abfangen!
-		return intGrid[x][y];
+		return cellGrid[x][y];
 	}
 	
+	/*
 	public int [][] getGrid()
 	{
 		return intGrid;
 	}
-	
+	*/
 }
