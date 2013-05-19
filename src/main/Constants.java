@@ -16,7 +16,7 @@ public interface Constants
 	
 	public final double SECONDARY_WEIGHT = 0;
 	
-	public final int DELAY_MS = 60;
+	public final int DELAY_MS = 80;
 	public final int DELAY_NS = 0;
 	
 	public final boolean OUTPUT = true;
