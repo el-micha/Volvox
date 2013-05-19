@@ -53,15 +53,22 @@ public class Grid implements Constants
 	
 	public void tick(int gameTick)
 	{
+		int mod = 0;
+		
 		Grid newGrid = new Grid(width, height, false);
 		for (int i = 0; i < width; i++)
 		{
 			for (int j = 0; j < height; j++)
 			{
+				if (i > width/3)
+					mod = 1;
+				if (i > 2*width/3)
+					mod = -1;
+				
 				int neighbours = getNeighbours(i, j);
 				
 				if (getCellAt(i, j).getType() == LIVING_CELL)
-					if ((neighbours >= RULE_SURVIVE_MIN) && (neighbours <= RULE_SURVIVE_MAX))
+					if ((neighbours >= RULE_SURVIVE_MIN + mod) && (neighbours <= RULE_SURVIVE_MAX + mod))
 						newGrid.getCellAt(i, j).setType(LIVING_CELL);
 					else 
 					{
@@ -69,7 +76,7 @@ public class Grid implements Constants
 					}
 				else if (getCellAt(i, j).getType() == DEAD_CELL)
 				{
-					if ((neighbours >= RULE_BIRTH_MIN) && (neighbours <= RULE_BIRTH_MAX))
+					if ((neighbours >= RULE_BIRTH_MIN + mod) && (neighbours <= RULE_BIRTH_MAX + mod))
 						newGrid.getCellAt(i, j).setType(LIVING_CELL);
 					else 
 					{
