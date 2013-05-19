@@ -6,7 +6,7 @@ public class Cell implements Constants
 	public int x;
 	public int y;
 	
-	public Cell(int iType, int iX, int iY)
+	public Cell(int iX, int iY, int iType)
 	{
 		type = iType;
 		x = iX;

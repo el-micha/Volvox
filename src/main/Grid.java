@@ -20,6 +20,14 @@ public class Grid implements Constants
 		{
 			for (int j = 0; j < height; j++)
 			{
+				cellGrid[i][j] = new Cell(i, j, 0);
+			}
+		}
+		
+		for (int i = 0; i < width; i++)
+		{
+			for (int j = 0; j < height; j++)
+			{
 				if (j < height/2)
 					getCellAt(i, j).setType(0);
 				else 
@@ -52,13 +60,6 @@ public class Grid implements Constants
 		//TODO: abfangen!
 		return cellGrid[x][y];
 	}
-	
-	/*
-	public Cell [][] getGrid()
-	{
-		return cellGrid;
-	}
-	*/
 	
 	/*
 	public void integrateCells(Volvox aVolvox)
