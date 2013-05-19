@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -12,37 +13,37 @@ public class GridDrawer implements Constants
 	static Image water = (new ImageIcon(IMG_PATH + "water.png")).getImage();
 	static Image innerCell;
 	static Image borderCell;
-	static Grid grid;
+	static Grid theGrid;
 	
-	public GridDrawer(Grid aGrid)
+	public GridDrawer(Grid grid)
 	{
-		grid = aGrid;
+		theGrid = grid;
 	}
 	
 	public void drawGrid(Graphics2D context, JPanel panel)
 	{
-		int currentCellType;
-		for (int i = 0; i < grid.width; i++)
+		int currentCellInt;
+		for (int i = 0; i < theGrid.width; i++)
 		{
-			for (int j = 0; j < grid.height; j++)
+			for (int j = 0; j < theGrid.height; j++)
 			{
-				currentCellType = grid.getCellAt(i, j).getType();
+				currentCellInt = theGrid.getGrid()[i][j];
 				
-				if (currentCellType == 0)
+				if (currentCellInt == 0)
 				{
 					context.drawImage(air, i * CELL_SIZE, j * CELL_SIZE, panel);
 				}
-				else if (currentCellType == 1)
+				else if (currentCellInt == 1)
 				{
 					context.drawImage(water, i * CELL_SIZE, j * CELL_SIZE, panel);
 				}
-				else if (currentCellType == 2)
+				else if (currentCellInt == 2)
 				{
 					context.drawImage(soil, i * CELL_SIZE, j * CELL_SIZE, panel);
 				}
 				else
 				{
-					System.out.println("Unknown cell type: " + currentCellType);
+					System.out.println("Unknown cell type: " + currentCellInt);
 				}
 			}
 		}
