@@ -7,16 +7,16 @@ public interface Constants
 	public final int GAMEBOARD_HEIGHT = 512 + 128 + 256;
 	public final int CELL_SIZE = 8;
 	
-	public final int RULE_SURVIVE_MIN = 3;
-	public final int RULE_SURVIVE_MAX = 7;
+	public final int RULE_SURVIVE_MIN = 4;
+	public final int RULE_SURVIVE_MAX = 6;
 	public final int RULE_BIRTH_MIN = 4;
-	public final int RULE_BIRTH_MAX = 5;
+	public final int RULE_BIRTH_MAX = 4;
 	
-	public final int INIT_DENSITY = 50;
+	public final int INIT_DENSITY = 30;
 	
-	public final double SECONDARY_WEIGHT = 0.5;
+	public final double SECONDARY_WEIGHT = 0.1;
 	
-	public final int DELAY_MS = 60;
+	public final int DELAY_MS = 100;
 	public final int DELAY_NS = 0;
 	
 	public final boolean OUTPUT = true;
