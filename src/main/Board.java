@@ -43,6 +43,7 @@ public class Board extends JPanel implements Runnable, Constants
 	public void run()
 	{
 		parent.getInputListener().registerGrid(theGrid);
+		parent.getInputListener().registerBoard(this);
 		
 		Ulf.out("running now");
 		sleepMS(400);
@@ -56,10 +57,14 @@ public class Board extends JPanel implements Runnable, Constants
 			
 			
 			//tickEntities(tick);
-			theGrid.tick(tick);
+			if (running)
+			{
+				theGrid.tick(tick);				
+			}
 			
 			repaint();
 			
+			/*
 			//pause on buttonclick
 			while (!running)
 			{
@@ -67,7 +72,7 @@ public class Board extends JPanel implements Runnable, Constants
 				catch (InterruptedException e)
 				{e.printStackTrace(); }
 			}
-			
+			*/
 			
 			timeDiff = System.currentTimeMillis() - beforeTime;
 			sleep = DELAY_MS - timeDiff;
