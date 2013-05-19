@@ -58,7 +58,7 @@ public class Grid implements Constants
 		{
 			for (int j = 0; j < height; j++)
 			{
-				int neighbours = getSecondNeighbours(i, j);
+				int neighbours = getNeighbours(i, j);
 				
 				if (getCellAt(i, j).getType() == LIVING_CELL)
 					if ((neighbours >= RULE_SURVIVE_MIN) && (neighbours <= RULE_SURVIVE_MAX))
