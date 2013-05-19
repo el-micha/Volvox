@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class Grid implements Constants
 {
-	private int [] [] intGrid;
+	private Cell [] [] cellGrid;
 	public int width;
 	public int height;
 	private GridDrawer myDrawer;
@@ -15,16 +15,16 @@ public class Grid implements Constants
 	{
 		width = mWidth;
 		height = mHeight;
-		intGrid = new int [width][height];
+		cellGrid = new Cell [width][height];
 		for (int i = 0; i < width; i++)
 		{
 			for (int j = 0; j < height; j++)
 			{
 				if (j < height/2)
-					intGrid[i][j] = 0;
+					getCellAt(i, j).setType(0);
 				else 
 				{
-					intGrid[i][j] = 1;
+					getCellAt(i, j).setType(1);
 				}
 			}
 		}
@@ -38,25 +38,29 @@ public class Grid implements Constants
 		//TODO: mehr abfangen
 		if (x < 0 || x > GAMEBOARD_WIDTH || y < 0 || y > GAMEBOARD_HEIGHT)
 			return;
-		intGrid[(int)Math.round(x/8)][(int)Math.round(y/8)] = cellType;
+		getCellAt((int)Math.round(x/8), (int)Math.round(y/8)).setType(cellType);
 	}
+	 
 	
 	public void drawGrid(Graphics2D context, JPanel panel)
 	{
 		myDrawer.drawGrid(context, panel);
 	}
 	
-	public int getCellAt(int x, int y)
+	public Cell getCellAt(int x, int y)
 	{
 		//TODO: abfangen!
-		return intGrid[x][y];
+		return cellGrid[x][y];
 	}
 	
-	public int [][] getGrid()
+	/*
+	public Cell [][] getGrid()
 	{
-		return intGrid;
+		return cellGrid;
 	}
+	*/
 	
+	/*
 	public void integrateCells(Volvox aVolvox)
 	{
 		int[][] cells = aVolvox.getCells();
@@ -65,8 +69,9 @@ public class Grid implements Constants
 			if (cells[i][0] == 0)
 				continue;
 			
-			intGrid[cells[i][0]][cells[i][1]] = cells[i][2];
+			cellGrid[cells[i][0]][cells[i][1]] = cells[i][2];
 			
 		}
 	}
+	*/
 }
