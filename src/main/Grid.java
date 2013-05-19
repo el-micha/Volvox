@@ -15,11 +15,22 @@ public class Grid implements Constants
 	private static final int LIVING_CELL = 1;
 	private static final int DEAD_CELL = 0;
 	
-	public Grid(int mWidth, int mHeight)
+	public Grid(int mWidth, int mHeight, boolean filled)
 	{
 		width = mWidth;
 		height = mHeight;
 		cellGrid = new Cell [width][height];
+		for (int i = 0; i < width; i++)
+		{
+			for (int j = 0; j < height; j++)
+			{
+				cellGrid[i][j] = new Cell(i, j, 0);
+			}
+		}
+		
+		if (!filled)
+			{myDrawer = new GridDrawer(this); return;}
+		
 		Random random = new Random();
 		for (int i = 0; i < width; i++)
 		{
@@ -28,10 +39,10 @@ public class Grid implements Constants
 				int r = random.nextInt(100);
 				
 				if (r > 90)
-					getCellAt(i, j).setType(0);
+					getCellAt(i, j).setType(LIVING_CELL);
 				else 
 				{
-					getCellAt(i, j).setType(1);
+					getCellAt(i, j).setType(DEAD_CELL);
 				}
 			}
 		}
@@ -40,14 +51,6 @@ public class Grid implements Constants
 		myDrawer = new GridDrawer(this);
 	}
 	
-	public Grid(int mWidth, int mHeight, boolean filled)
-	{
-		width = mWidth;
-		height = mHeight;
-		cellGrid = new Cell [width][height];
-		
-		myDrawer = new GridDrawer(this);
-	}
 	
 	public void tick(int gameTick)
 	{
@@ -60,24 +63,24 @@ public class Grid implements Constants
 				
 				if (getCellAt(i, j).getType() == LIVING_CELL)
 					if ((neighbours < 2) || (neighbours > 3))
-						newGrid.getGrid()[i][j] = DEAD_CELL;
+						newGrid.getCellAt(i, j).setType(DEAD_CELL);
 					else 
 					{
-						newGrid.getGrid()[i][j] = LIVING_CELL;
+						newGrid.getCellAt(i, j).setType(LIVING_CELL);
 					}
-				else if (intGrid[i][j] == DEAD_CELL)
+				else if (getCellAt(i, j).getType() == DEAD_CELL)
 				{
 					if (neighbours == 3)
-						newGrid.getGrid()[i][j] = LIVING_CELL;
+						newGrid.getCellAt(i, j).setType(LIVING_CELL);
 					else 
 					{
-						newGrid.getGrid()[i][j] = DEAD_CELL;
+						newGrid.getCellAt(i, j).setType(DEAD_CELL);
 					}
 				}
 				else
 				{
 					Ulf.out("strange cell type");
-					newGrid.getGrid()[i][j] = intGrid[i][j];
+					newGrid.getCellAt(i, j).setType(getCellAt(i, j).getType());
 				}
 			}
 		}
@@ -101,21 +104,15 @@ public class Grid implements Constants
 		getCellAt((int)Math.round(x/8), (int)Math.round(y/8)).setType(cellType);
 	}
 	
-	public void drawGrid(Graphics2D context, JPanel panel)
-	{
-		myDrawer.drawGrid(context, panel);
-	}
-	
 	public Cell getCellAt(int x, int y)
 	{
 		//TODO: abfangen!
 		return cellGrid[x][y];
 	}
 	
-	/*
-	public int [][] getGrid()
+	public void drawGrid(Graphics2D context, JPanel panel)
 	{
-		return intGrid;
+		myDrawer.drawGrid(context, panel);
 	}
-	*/
+	
 }

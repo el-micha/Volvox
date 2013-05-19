@@ -13,5 +13,21 @@ public class Cell implements Constants
 		y = iY;
 	}
 	
+	public int getType()
+	{
+		return type;
+	}
+	public int getX()
+	{
+		return x;
+	}
+	public int getY()
+	{
+		return y;
+	}
 	
+	public void setType(int nType)
+	{
+		type = nType;
+	}
 }

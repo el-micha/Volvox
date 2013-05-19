@@ -23,7 +23,7 @@ public class Board extends JPanel implements Runnable, Constants
 		setSize(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
 		//setLocation(100, 100);
 		
-		theGrid = new Grid(GAMEBOARD_WIDTH / CELL_SIZE, GAMEBOARD_HEIGHT / CELL_SIZE);
+		theGrid = new Grid(GAMEBOARD_WIDTH / CELL_SIZE, GAMEBOARD_HEIGHT / CELL_SIZE, true);
 		
 	}
 	
