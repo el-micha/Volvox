@@ -31,7 +31,6 @@ public class VolvoxSim extends JFrame implements Constants
 		
 		add(board);
 		addMouseListener(listener);
-		addKeyListener(listener);
 		
 		//InputListener inputListener = new InputListener(board, scrollFrame);
 		//addKeyListener(inputListener);
