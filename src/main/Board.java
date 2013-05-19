@@ -13,6 +13,7 @@ public class Board extends JPanel implements Runnable, Constants
 	private Thread simulator;
 	public boolean running = true;
 	private int tick = 0;
+	public double secondaryWeight = SECONDARY_WEIGHT;
 	
 	private Grid theGrid;
 	
@@ -55,11 +56,13 @@ public class Board extends JPanel implements Runnable, Constants
 		{
 			tick++; //System.out.println("Tick: " + tick);
 			
+			secondaryWeight += Math.random()/100 - Math.random()/1000;
+			Ulf.out("Weight: " + secondaryWeight);
 			
 			//tickEntities(tick);
 			if (running)
 			{
-				theGrid.tick(tick);				
+				theGrid.tick(tick, secondaryWeight);				
 			}
 			
 			repaint();

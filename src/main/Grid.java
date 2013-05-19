@@ -11,6 +11,7 @@ public class Grid implements Constants
 	public int width;
 	public int height;
 	private GridDrawer myDrawer;
+	private double secondaryWeight;
 	
 	private static final int LIVING_CELL = 1;
 	private static final int DEAD_CELL = 0;
@@ -51,15 +52,17 @@ public class Grid implements Constants
 	}
 	
 	
-	public void tick(int gameTick)
+	public void tick(int gameTick, double secWeight)
 	{
+		secondaryWeight = secWeight;
+		
 		Grid newGrid = new Grid(width, height, false);
 		for (int i = 0; i < width; i++)
 		{
 			for (int j = 0; j < height; j++)
 			{
 				
-				int neighbours = getNeighbours(i, j);
+				int neighbours = getSecondNeighbours(i, j);
 				
 				if (getCellAt(i, j).getType() == LIVING_CELL)
 					if ((neighbours >= RULE_SURVIVE_MIN) && (neighbours <= RULE_SURVIVE_MAX))
@@ -347,98 +350,282 @@ public class Grid implements Constants
 		if (x > 1)
 		{
 			if (getCellAt(x - 2, y).getType() == LIVING_CELL)
-				neighbours+=SECONDARY_WEIGHT;
+				neighbours+=secondaryWeight;
 			if (y > 0)
 			{
 				if (getCellAt(x - 2, y - 1).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(x - 2, height - 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (y < height - 1)
 			{
 				if (getCellAt(x - 2, y + 1).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(x - 2, 0).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (y > 1)
 			{
 				if (getCellAt(x - 2, y - 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(x - 2, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (y < height - 2)
 			{
 				if (getCellAt(x - 2, y + 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(x - 2, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 		}
 		else 
 		{
-
+			if (getCellAt(width - 2, y).getType() == LIVING_CELL)
+				neighbours+=secondaryWeight;
+			if (y > 0)
+			{
+				if (getCellAt(width - 2, y - 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(width - 2, height - 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(width - 2, y + 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(width - 2, 0).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (y > 1)
+			{
+				if (getCellAt(width - 2, y - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(width - 2, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (y < height - 2)
+			{
+				if (getCellAt(width - 2, y + 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(width - 2, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
 		}
 		if (x < width - 2)
 		{
 			if (getCellAt(x + 2, y).getType() == LIVING_CELL)
-				neighbours+=SECONDARY_WEIGHT;
+				neighbours+=secondaryWeight;
 			if (y > 0)
 			{
 				if (getCellAt(x + 2, y - 1).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(x + 2, height - 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (y < height - 1)
 			{
 				if (getCellAt(x + 2, y + 1).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(x + 2, 0).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (y > 1)
 			{
 				if (getCellAt(x + 2, y - 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(x + 2, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (y < height - 2)
 			{
 				if (getCellAt(x + 2, y + 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(x + 2, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 		}
 		else
 		{
-			
+			if (getCellAt(1, y).getType() == LIVING_CELL)
+				neighbours+=secondaryWeight;
+			if (y > 0)
+			{
+				if (getCellAt(1, y - 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(1, height - 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(1, y + 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(1, 0).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (y > 1)
+			{
+				if (getCellAt(1, y - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(1, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (y < height - 2)
+			{
+				if (getCellAt(1, y + 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(1, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
 		}
 		if (y > 1)
 		{
 			if (getCellAt(x, y - 2).getType() == LIVING_CELL)
-				neighbours+=SECONDARY_WEIGHT;
+				neighbours+=secondaryWeight;
 			if (x > 0)
 			{
 				if (getCellAt(x - 1, y - 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(width - 1, y - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (x < width - 1)
 			{
 				if (getCellAt(x + 1, y - 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(0, y - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 		}
 		else 
 		{
-			
+			if (getCellAt(x, height - 2).getType() == LIVING_CELL)
+				neighbours+=secondaryWeight;
+			if (x > 0)
+			{
+				if (getCellAt(x - 1, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(width - 1, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (x < width - 1)
+			{
+				if (getCellAt(x + 1, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(0, height - 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
 		}
 		if (y < height - 2)
 		{
 			if (getCellAt(x, y + 2).getType() == LIVING_CELL)
-				neighbours+=SECONDARY_WEIGHT;
+				neighbours+=secondaryWeight;
 			if (x > 0)
 			{
 				if (getCellAt(x - 1, y + 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(width - 1, y + 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 			if (x < width - 1)
 			{
 				if (getCellAt(x + 1, y + 2).getType() == LIVING_CELL)
-					neighbours+=SECONDARY_WEIGHT;
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(0, y + 2).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
 			}
 		}
 		else 
 		{
-			
+			if (getCellAt(x, 1).getType() == LIVING_CELL)
+				neighbours+=secondaryWeight;
+			if (x > 0)
+			{
+				if (getCellAt(x - 1, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else 
+			{
+				if (getCellAt(width - 1, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			if (x < width - 1)
+			{
+				if (getCellAt(x + 1, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
+			else
+			{
+				if (getCellAt(0, 1).getType() == LIVING_CELL)
+					neighbours+=secondaryWeight;
+			}
 		}
 		
 		return (int)Math.round(neighbours);
