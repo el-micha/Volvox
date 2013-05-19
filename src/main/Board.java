@@ -23,7 +23,7 @@ public class Board extends JPanel implements Runnable, Constants
 		setSize(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
 		//setLocation(100, 100);
 		
-		theGrid = new Grid(GAMEBOARD_WIDTH / CELL_SIZE, GAMEBOARD_HEIGHT / CELL_SIZE);
+		theGrid = new Grid(GAMEBOARD_WIDTH / CELL_SIZE, GAMEBOARD_HEIGHT / CELL_SIZE, true);
 		
 	}
 	
@@ -43,9 +43,10 @@ public class Board extends JPanel implements Runnable, Constants
 	public void run()
 	{
 		parent.getInputListener().registerGrid(theGrid);
+		parent.getInputListener().registerBoard(this);
 		
 		Ulf.out("running now");
-		
+		sleepMS(400);
 		//initializeEntities();
 		//better do that in constructor of Board
 		
@@ -56,8 +57,14 @@ public class Board extends JPanel implements Runnable, Constants
 			
 			
 			//tickEntities(tick);
+			if (running)
+			{
+				theGrid.tick(tick);				
+			}
+			
 			repaint();
 			
+			/*
 			//pause on buttonclick
 			while (!running)
 			{
@@ -65,24 +72,29 @@ public class Board extends JPanel implements Runnable, Constants
 				catch (InterruptedException e)
 				{e.printStackTrace(); }
 			}
-			
+			*/
 			
 			timeDiff = System.currentTimeMillis() - beforeTime;
 			sleep = DELAY_MS - timeDiff;
 			if (sleep <= 0)
 				sleep = 2;
-			try
-			{
-				Thread.sleep(sleep, DELAY_NS);
-			}
-			catch (InterruptedException e)
-			{
-				e.printStackTrace();
-			}
+			sleepMS(sleep);
 			beforeTime = System.currentTimeMillis();
 			
 		}
 
+	}
+	
+	private void sleepMS(long delay)
+	{
+		try
+		{
+			Thread.sleep(delay, DELAY_NS);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public void paint(Graphics g)
