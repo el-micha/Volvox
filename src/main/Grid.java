@@ -12,6 +12,9 @@ public class Grid implements Constants
 	public int height;
 	private GridDrawer myDrawer;
 	
+	private static final int LIVING_CELL = 1;
+	private static final int DEAD_CELL = 0;
+	
 	public Grid(int mWidth, int mHeight)
 	{
 		width = mWidth;
@@ -53,20 +56,42 @@ public class Grid implements Constants
 		{
 			for (int j = 0; j < height; j++)
 			{
-				int neighbours = 0;
+				int neighbours = getNeigbours(i, j);
 				
-				
-				if (neighbours > 90)
-					intGrid[i][j] = 0;
-				else 
+				if (intGrid[i][j] == LIVING_CELL)
+					if ((neighbours < 2) || (neighbours > 3))
+						newGrid.getGrid()[i][j] = DEAD_CELL;
+					else 
+					{
+						newGrid.getGrid()[i][j] = LIVING_CELL;
+					}
+				else if (intGrid[i][j] == DEAD_CELL)
 				{
-					intGrid[i][j] = 1;
+					if (neighbours == 3)
+						newGrid.getGrid()[i][j] = LIVING_CELL;
+					else 
+					{
+						newGrid.getGrid()[i][j] = DEAD_CELL;
+					}
+				}
+				else
+				{
+					Ulf.out("strange cell type");
+					newGrid.getGrid()[i][j] = intGrid[i][j];
 				}
 			}
 		}
 	}
 	
+	private int getNeigbours(int x, int y)
+	{
+		return 0;
+	}
 	
+	private int getNeighboursOnTorus(int x, int y)
+	{
+		return 0;
+	}
 	
 	public void setCell(int x, int y, int cellType)
 	{
