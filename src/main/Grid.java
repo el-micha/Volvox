@@ -62,7 +62,10 @@ public class Grid implements Constants
 			for (int j = 0; j < height; j++)
 			{
 				
-				int neighbours = getSecondNeighbours(i, j);
+				int neighbours = getSphericalNeighbours(i, j);
+				//int neighbours = getSecondNeighbours(i, j);
+				//int neighbours = getNeighbours(i, j);
+				
 				
 				if (getCellAt(i, j).getType() == LIVING_CELL)
 					if ((neighbours >= RULE_SURVIVE_MIN) && (neighbours <= RULE_SURVIVE_MAX))
@@ -91,10 +94,6 @@ public class Grid implements Constants
 		cellGrid = newGrid.getGrid();
 	}
 	
-	private int getNeigboursOnTorus(int x, int y)
-	{
-		return 0;
-	}
 	
 	private int getNeighbours(int x, int y)
 	{
@@ -217,6 +216,134 @@ public class Grid implements Constants
 		else
 		{
 			if (getCellAt(x, 0).getType() == LIVING_CELL)
+				neighbours++;
+		}
+		
+		return neighbours;
+	}
+	
+	
+	private int getSphericalNeighbours(int x, int y)
+	{
+		int neighbours = 0;
+		if (x > 0)
+		{
+			if (getCellAt(x - 1, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(x - 1, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt((x - 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(x - 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt((x - 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		else 
+		{
+			if (getCellAt(width - 1, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(width - 1, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt((x - 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(width - 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else
+			{
+				if (getCellAt((x - 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		if (x < width - 1)
+		{
+			if (getCellAt(x + 1, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(x + 1, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt((x + 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(x + 1, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt((x + 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		else
+		{
+			if (getCellAt(0, y).getType() == LIVING_CELL)
+				neighbours++;
+			if (y > 0)
+			{
+				if (getCellAt(0, y - 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else
+			{
+				if (getCellAt((x - 1 + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			if (y < height - 1)
+			{
+				if (getCellAt(0, y + 1).getType() == LIVING_CELL)
+					neighbours++;
+			}
+			else 
+			{
+				if (getCellAt((x + (width/2))%width, y).getType() == LIVING_CELL)
+					neighbours++;
+			}
+		}
+		if (y > 0)
+		{
+			if (getCellAt(x, y - 1).getType() == LIVING_CELL)
+				neighbours++;
+		}
+		else 
+		{
+			if (getCellAt((x + (width/2))%width, y).getType() == LIVING_CELL)
+				neighbours++;
+		}
+		if (y < height - 1)
+		{
+			if (getCellAt(x, y + 1).getType() == LIVING_CELL)
+				neighbours++;
+		}
+		else
+		{
+			if (getCellAt((x + (width/2))%width, y).getType() == LIVING_CELL)
 				neighbours++;
 		}
 		
