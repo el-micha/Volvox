@@ -54,7 +54,8 @@ public class InputListener implements MouseListener, KeyListener, Constants
 		int y = e.getY() - WINDOW_FRAME_OFFSET_Y;
 		Ulf.out("Click at " + x + "/" + y);
 		
-		grid.setCell(x, y, 1);
+		//grid.setCell(x, y, 1);
+		grid.invertCell(x, y);
 		
 	}
 

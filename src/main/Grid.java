@@ -37,6 +37,7 @@ public class Grid implements Constants
 		{
 			for (int j = 0; j < height; j++)
 			{
+				//int r = random.nextInt((300*i)/width + 1);
 				int r = random.nextInt(100);
 				
 				if (r < INIT_DENSITY)
@@ -62,8 +63,8 @@ public class Grid implements Constants
 			for (int j = 0; j < height; j++)
 			{
 				
-				int neighbours = getSphericalNeighbours(i, j);
-				//int neighbours = getSecondNeighbours(i, j);
+				//int neighbours = getSphericalNeighbours(i, j);
+				int neighbours = getSecondNeighbours(i, j);
 				//int neighbours = getNeighbours(i, j);
 				
 				
@@ -779,6 +780,20 @@ public class Grid implements Constants
 	private Cell[][] getGrid()
 	{
 		return cellGrid;
+	}
+
+
+	public void invertCell(int x, int y) 
+	{
+		if (x < 0 || x > GAMEBOARD_WIDTH || y < 0 || y > GAMEBOARD_HEIGHT)
+			return;
+		int type = getCellAt((int)Math.round(x/CELL_SIZE), (int)Math.round(y/CELL_SIZE)).getType();
+		if (type == 0)
+			type = 1;
+		else if (type == 1)
+			type = 0;
+		else {type = 0;}
+		getCellAt((int)Math.round(x/CELL_SIZE), (int)Math.round(y/CELL_SIZE)).setType(type);
 	}
 	
 }
