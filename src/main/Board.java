@@ -57,7 +57,7 @@ public class Board extends JPanel implements Runnable, Constants
 			tick++; //System.out.println("Tick: " + tick);
 			
 			//secondaryWeight = -2 * Math.sin(tick/(2*Math.PI*300));
-			Ulf.out("Weight: " + secondaryWeight);
+			//Ulf.out("Weight: " + secondaryWeight);
 			
 			//tickEntities(tick);
 			if (running)
