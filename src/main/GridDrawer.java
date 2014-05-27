@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 
 public class GridDrawer implements Constants
 {
-	static Image air = (new ImageIcon(IMG_PATH + "btc2.png")).getImage();		//air	doge4
+	static Image air = (new ImageIcon(IMG_PATH + "air.png")).getImage();		//air
 	static Image soil = (new ImageIcon(IMG_PATH + "soil.png")).getImage();		
-	static Image water = (new ImageIcon(IMG_PATH + "doge2.png")).getImage();	//water
+	static Image water = (new ImageIcon(IMG_PATH + "water.png")).getImage();	//water
 	static Image innerCell;
 	static Image borderCell;
 	static Grid grid;
